@@ -1,8 +1,8 @@
 CalReply
 ========
 
-CalReplyApi > webapi
-CalReplyModels > Model
-CalReplyWeb > MVC
-CalReplyTest > Unit test cases
+1. CalReplyApi > webapi
+2. CalReplyModels > Model
+3. CalReplyWeb > MVC
+4. CalReplyTest > Unit test cases
 
