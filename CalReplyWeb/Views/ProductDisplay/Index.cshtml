@@ -19,6 +19,7 @@ Below list fetched by jquery from asp.net web API
 <br />
 <br />
 
+@*kendo ui grid to display product information*@
 @(Html.Kendo().Grid<CalReplyModels.Product>()
             .Name("ProductList")
             .HtmlAttributes(new { style = "height:400px;width:100%" })
@@ -47,8 +48,6 @@ Below list fetched by jquery from asp.net web API
             .Scrollable()
             .Filterable()
             .Resizable(resize => resize.Columns(true))
-        //  .ToolBar(toolBar => toolBar.Custom().Name("ExcelExport").Text("Export To Excel"))
-
 )
 
 <script type="text/javascript">
