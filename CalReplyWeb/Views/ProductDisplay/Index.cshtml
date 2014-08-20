@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "ProductDisplay";
+}
+
+<h3>Product List Display</h3>
+
+Below list fetched by jquery from asp.net web API
+
+<br />
+<br />
+
+@(Html.Kendo().Button()
+    .Name("textButton")
+    .Content("Load Data using WebAPI")
+    .Icon("ungroup")
+    .HtmlAttributes(new { type = "button" })
+    .Events(ev => ev.Click("onClick")))
+
+<br />
+<br />
+
+@(Html.Kendo().Grid<CalReplyModels.Product>()
+            .Name("ProductList")
+            .HtmlAttributes(new { style = "height:400px;width:100%" })
+            .Columns
+                (columns =>
+                {
+                    columns.Bound(m => m.Id).Groupable(true).Title("Id").Width("10%").ClientGroupHeaderTemplate("#=value# (Count: #=count#)");
+                    columns.Bound(m => m.Name).Groupable(true).Title("Name").Width("30%").ClientGroupHeaderTemplate("#=value# (Count: #=count#)");
+                    columns.Bound(m => m.Category).Groupable(true).Title("Category").Width("30%").ClientGroupHeaderTemplate("#=value# (Count: #=count#)");
+                    columns.Bound(m => m.Price).Groupable(true).Title("Price").Width("20%").ClientGroupHeaderTemplate("#=value# (Count: #=count#)");
+                })
+             .DataSource(dataSource => dataSource
+                .Ajax()
+                .ServerOperation(false)
+                .Aggregates(aggregates =>
+                {
+                    aggregates.Add(p => p.Id).Count();
+                    aggregates.Add(p => p.Name).Count();
+                    aggregates.Add(p => p.Category).Count();
+                    aggregates.Add(p => p.Price).Count();
+                })
+             )
+            .Groupable()
+            .Pageable(pager => pager.PageSizes(new int[] { 3, 5, 7, 10 }))
+            .Sortable()
+            .Scrollable()
+            .Filterable()
+            .Resizable(resize => resize.Columns(true))
+        //  .ToolBar(toolBar => toolBar.Custom().Name("ExcelExport").Text("Export To Excel"))
+
+)
+
+<script type="text/javascript">
+    function onClick(e) {
+        // Fetch product list using webAPI
+        $.ajax({
+            url: "http://localhost:64301/api/products",
+            type: "Get",
+            cache: "false",
+            success: function (result) {
+                $("#ProductList").data("kendoGrid").dataSource.data(result);
+            },
+            error: function (msg) { alert('Error occurred while fetching data.'); }
+        });
+    }
+</script>
