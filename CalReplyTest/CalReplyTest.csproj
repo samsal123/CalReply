@@ -78,10 +78,6 @@
       <Project>{d3309509-5b84-416d-ba90-6e2eeb1e4181}</Project>
       <Name>CalReplyModels</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CalReply\CalReplyApi.csproj">
-      <Project>{e41250b3-31e4-4b44-8b5f-3446195630ab}</Project>
-      <Name>CalReplyApi</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
