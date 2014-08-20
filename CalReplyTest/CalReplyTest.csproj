@@ -71,9 +71,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CalReplyApi\CalReplyApi.csproj">
+      <Project>{e41250b3-31e4-4b44-8b5f-3446195630ab}</Project>
+      <Name>CalReplyApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CalReplyModels\CalReplyModels.csproj">
       <Project>{d3309509-5b84-416d-ba90-6e2eeb1e4181}</Project>
       <Name>CalReplyModels</Name>

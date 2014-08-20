@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Http;
 using System.Web.Routing;
+using WebApiContrib.Formatting.Jsonp;
+using System.Net.Http.Formatting;
 
 namespace CalReplyApi
 {
@@ -16,6 +18,7 @@ namespace CalReplyApi
 
             //AreaRegistration.RegisterAllAreas();
             //RouteConfig.RegisterRoutes(RouteTable.Routes);
+            GlobalConfiguration.Configuration.Formatters.Insert(0, new JsonpMediaTypeFormatter(new JsonMediaTypeFormatter()));
         }
     }
 }

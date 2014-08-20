@@ -56,11 +56,14 @@ Below list fetched by jquery from asp.net web API
         $.ajax({
             url: "http://localhost:64301/api/products",
             type: "Get",
+            dataType: 'jsonp',
             cache: "false",
             success: function (result) {
                 $("#ProductList").data("kendoGrid").dataSource.data(result);
             },
-            error: function (msg) { alert('Error occurred while fetching data.'); }
+            error: function (msg) {
+                alert('Error occurred while fetching data.');
+            }
         });
     }
 </script>
